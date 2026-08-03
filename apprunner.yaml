@@ -1,0 +1,18 @@
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    build:
+      - npm install --omit=dev
+run:
+  runtime-version: 18
+  command: npm start
+  network:
+    port: 8080
+    env: PORT
+  env:
+    - name: NODE_ENV
+      value: production
+    # DATABASE_URL should NOT be hardcoded here since this file is committed
+    # to GitHub. Set it as a plaintext or secret Environment Variable in the
+    # App Runner service configuration in the AWS console instead.
